@@ -7,7 +7,7 @@ function InsertGoal({ ...otherProps }) {
   } = useContext(StoreContext);
   const [goal, setGoal] = useState('');
 
-  const handleGoalId = goals ? goals.length - 1 : 0;
+  const handleGoalId = goals ? goals.length : 0;
   const handleSubmit = event => {
     event.preventDefault();
     setGoals([{ id: handleGoalId, goal }]);
