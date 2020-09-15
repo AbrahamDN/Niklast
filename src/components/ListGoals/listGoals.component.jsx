@@ -9,7 +9,11 @@ function ListGoals({ ...otherProps }) {
     <div {...otherProps}>
       <div>
         <ul>
-          {goals ? goals.map(goal => <li key={goal.id}>{goal.goal}</li>) : null}
+          {goals
+            ? goals.map((goal, key) => (
+                <li key={goal.id || key}>{goal.goal}</li>
+              ))
+            : null}
         </ul>
       </div>
     </div>
