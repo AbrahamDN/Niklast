@@ -5,6 +5,7 @@ function InsertGoal({ ...otherProps }) {
   const {
     goalsState: [goals, setGoals],
     currentGoalState: [currentGoal, setCurrentGoal],
+    handleSequence,
   } = useContext(StoreContext);
   const [goal, setGoal] = useState('');
 
@@ -13,6 +14,7 @@ function InsertGoal({ ...otherProps }) {
     event.preventDefault();
     setGoals([...goals, { id: handleGoalId, goal }]);
     setCurrentGoal({ id: handleGoalId, goal });
+    handleSequence();
   };
   return (
     <div {...otherProps}>
