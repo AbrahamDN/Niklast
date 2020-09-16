@@ -3,7 +3,7 @@ import React from 'react';
 import Sequence from '../../components/Sequence/sequence.component';
 import InsertGoal from '../../components/InsertGoal/insertGoal.component';
 import ListGoals from '../../components/ListGoals/listGoals.component';
-import SetGoalDuration from '../../components/setGoalDuration/setGoalDuration.component';
+import SetGoalDurationPage from '../SetGoalDurationPage/setGoalDurationPage.page';
 
 function MainPage() {
   return (
@@ -13,7 +13,7 @@ function MainPage() {
           <InsertGoal />
           <ListGoals />
         </div>,
-        <SetGoalDuration />,
+        <SetGoalDurationPage />,
       ]}
     />
   );
