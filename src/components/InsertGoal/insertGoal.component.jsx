@@ -4,9 +4,10 @@ import { StoreContext } from '../../context/storeContext';
 function InsertGoal({ ...otherProps }) {
   const {
     goalsState: [goals, setGoals],
-    currentGoalState: [currentGoal, setCurrentGoal],
+    currentGoalState,
     handleSequence,
   } = useContext(StoreContext);
+  const setCurrentGoal = currentGoalState[1];
   const [goal, setGoal] = useState('');
 
   const handleGoalId = goals ? goals.length : 0;
