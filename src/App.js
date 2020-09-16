@@ -1,17 +1,16 @@
 import React from 'react';
-
-import InsertGoal from './components/InsertGoal/insertGoal.component';
-import ListGoals from './components/ListGoals/listGoals.component';
+import { Switch, Route } from 'react-router-dom';
 
 import './App.css';
+
+import MainPage from './pages/MainPage/mainPage.page';
 
 function App() {
   return (
     <div className='App'>
-      <div>
-        <InsertGoal />
-        <ListGoals />
-      </div>
+      <Switch>
+        <Route path='/' component={MainPage} />
+      </Switch>
     </div>
   );
 }
