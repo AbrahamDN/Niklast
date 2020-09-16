@@ -10,7 +10,7 @@ function InsertGoal({ ...otherProps }) {
   const handleGoalId = goals ? goals.length : 0;
   const handleSubmit = event => {
     event.preventDefault();
-    setGoals([{ id: handleGoalId, goal }]);
+    setGoals([...goals, { id: handleGoalId, goal }]);
   };
 
   return (
