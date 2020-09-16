@@ -4,6 +4,7 @@ import { StoreContext } from '../../context/storeContext';
 function InsertGoal({ ...otherProps }) {
   const {
     goalsState: [goals, setGoals],
+    currentGoalState: [currentGoal, setCurrentGoal],
   } = useContext(StoreContext);
   const [goal, setGoal] = useState('');
 
@@ -11,8 +12,8 @@ function InsertGoal({ ...otherProps }) {
   const handleSubmit = event => {
     event.preventDefault();
     setGoals([...goals, { id: handleGoalId, goal }]);
+    setCurrentGoal({ id: handleGoalId, goal });
   };
-
   return (
     <div {...otherProps}>
       <form onSubmit={e => handleSubmit(e)}>

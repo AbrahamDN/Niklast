@@ -5,6 +5,7 @@ export const StoreContext = createContext();
 
 const StoreContextProvider = ({ children }) => {
   const [goals, setGoals] = useLocalStorage('goalsData', []);
+  const [currentGoal, setCurrentGoal] = useLocalStorage('currentGoalDate', {});
   const [sequence, setSequence] = React.useState([]);
   const [countSequence, setCountSequence] = React.useState(0);
 
@@ -24,6 +25,7 @@ const StoreContextProvider = ({ children }) => {
 
   const store = {
     goalsState: [goals, setGoals],
+    currentGoalState: [currentGoal, setCurrentGoal],
     sequenceState: [sequence, setSequence],
     countSequenceState: [countSequence, setCountSequence],
     handleSequence,
