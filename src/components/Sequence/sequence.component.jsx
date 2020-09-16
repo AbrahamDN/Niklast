@@ -1,9 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { StoreContext } from '../../context/storeContext';
 
-import SequencePreviousBtn from './sequencePreviousBtn.component';
-import SequenceNextBtn from './sequenceNextBtn.component';
-
 function Sequence({ data, ...otherProps }) {
   const {
     sequenceState: [sequence, setSequence],
