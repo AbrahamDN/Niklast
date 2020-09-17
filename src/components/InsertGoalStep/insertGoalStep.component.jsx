@@ -11,7 +11,9 @@ function InsertGoalStep({ ...otherProps }) {
   const handleSubmit = event => {
     event.preventDefault();
     const handleSteps = (goal, step) => {
-      return goal.steps ? [...goal.steps, step] : [step];
+      return goal.steps
+        ? [...goal.steps, { id: goal.steps.length, step }]
+        : [{ id: 0, step }];
     };
 
     setGoals(
