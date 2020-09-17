@@ -1,6 +1,7 @@
 import React from 'react';
+import GoalStep from '../GoalStep/goalStep.component';
 
-function ListSteps({ steps, max, ...otherProps }) {
+function ListSteps({ steps, max, goal, valueOnly, ...otherProps }) {
   if (max && !(typeof max === 'number'))
     console.error(`ListSteps:`, ` typeof 'max' prop must be a number`);
 
@@ -8,7 +9,11 @@ function ListSteps({ steps, max, ...otherProps }) {
   return steps ? (
     steps.map((step, key) => (
       <li {...otherProps} key={key}>
-        {step}
+        {valueOnly ? (
+          <GoalStep step={step} valueOnly />
+        ) : (
+          <GoalStep step={step} goal={goal ? goal : null} />
+        )}
       </li>
     ))
   ) : (
