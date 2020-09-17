@@ -15,7 +15,7 @@ function TasksOverview() {
           <Link key={goal.id} to=''>
             <div>
               <h3>{goal.goal}</h3>
-              <ListSteps steps={goal.steps} max={3} />
+              <ListSteps steps={goal.steps} max={3} valueOnly />
             </div>
           </Link>
         ))
@@ -30,7 +30,7 @@ function TasksOverview() {
         <Link to='/'>
           <button>Add a new task</button>
         </Link>
-        <Link to=''>
+        <Link to='/tasks-today'>
           <button>Steps to take today</button>
         </Link>
       </div>

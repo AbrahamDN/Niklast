@@ -25,7 +25,7 @@ function GoalStep({ step, goal, valueOnly, ...otherProps }) {
   };
 
   if (valueOnly) {
-    return <span {...otherProps}>{step}</span>;
+    return <span {...otherProps}>{step.value}</span>;
   }
 
   return (

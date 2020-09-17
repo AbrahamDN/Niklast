@@ -53,8 +53,8 @@ function TodaysSteps() {
         goal.steps ? <StepsProgress key={goal.id} steps={goal.steps} /> : null
       )}
 
-      <Link to=''>
-        <button>Check Progression</button>
+      <Link to='/tasks'>
+        <button>Tasks Overview</button>
       </Link>
     </div>
   );
