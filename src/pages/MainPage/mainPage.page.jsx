@@ -1,4 +1,5 @@
 import React from 'react';
+// import { Link } from 'react-router-dom';
 
 import Sequence from '../../components/Sequence/sequence.component';
 import InsertGoal from '../../components/InsertGoal/insertGoal.component';
