@@ -6,6 +6,7 @@ import InsertGoal from '../../components/InsertGoal/insertGoal.component';
 import InsertGoalStepsPage from '../InsertGoalStepsPage/insertGoalSteps.page';
 import ListGoals from '../../components/ListGoals/listGoals.component';
 import SetGoalDurationPage from '../SetGoalDurationPage/setGoalDurationPage.page';
+import TaskPage from '../TasksPage/task.page';
 
 function MainPage() {
   return (
@@ -20,6 +21,7 @@ function MainPage() {
           <InsertGoalStepsPage />,
         ]}
       />
+      <TaskPage />
     </div>
   );
 }
