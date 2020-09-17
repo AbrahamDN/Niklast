@@ -1,7 +1,7 @@
 import React from 'react';
 
 function ListSteps({ steps, max, ...otherProps }) {
-  if (!(typeof max === 'number'))
+  if (max && !(typeof max === 'number'))
     console.error(`ListSteps:`, ` typeof 'max' prop must be a number`);
 
   steps = steps && max && typeof max === 'number' ? steps.slice(0, max) : steps;
