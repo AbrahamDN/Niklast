@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { StoreContext } from '../../context/storeContext';
 
-function Progress({ data, progress }) {
+function Progress({ data, onlyBar, noBar }) {
   const {
     goalsState: [goals],
   } = useContext(StoreContext);
@@ -14,11 +14,11 @@ function Progress({ data, progress }) {
   const getCompletedData = data.map(obj => (obj.complete ? obj : 0));
   const completedData = getCompletedData.filter(array => array).length;
 
-  if (progress && progress === 'alone') {
+  if (onlyBar) {
     return <progress value={completedData} max={totalData}></progress>;
   }
 
-  if (progress && progress === 'none') {
+  if (noBar) {
     return <p>{`${completedData} / ${totalData}`}</p>;
   }
 
