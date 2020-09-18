@@ -35,7 +35,7 @@ function GoalStep({ step, goal, valueOnly, ...otherProps }) {
           goal: <b>{goal.goal}</b>
         </cite>
       ) : null}
-      <div>{step}</div>
+      <div>{step.value}</div>
       <input
         type='checkbox'
         defaultChecked={step.complete || false}
