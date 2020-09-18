@@ -1,33 +1,56 @@
-import React, { useContext } from 'react';
-import { StoreContext } from '../../context/storeContext';
+import React from 'react';
 
-function Progress({ data, onlyBar, noBar }) {
-  const {
-    goalsState: [goals],
-  } = useContext(StoreContext);
+function Progress({ data, onlyBar, noBar, ...otherProps }) {
+  let total = [];
+  let completed = [];
 
-  const countData = goals.map(goal => (goal.steps ? goal.steps.length : 0));
-  const totalData =
-    countData && countData.length
-      ? countData.reduce((acc, curr) => acc + curr)
-      : null;
-  const getCompletedData = data.map(obj => (obj.complete ? obj : 0));
-  const completedData = getCompletedData.filter(array => array).length;
+  data.map(result => {
+    function handler() {
+      if (result.steps) {
+        for (let i = 0; i < result.steps.length; i++) {
+          const obj = result.steps[i];
+          if (obj.complete) completed.push(obj.complete);
+          return total.push(obj);
+        }
+      }
+
+      if (result.value) {
+        if (result.complete) completed.push(result);
+        return total.push(result);
+      }
+
+      if (result.complete) completed.push(result);
+      else
+        console.warn(`Progress: could not find 'complete' property in object.`);
+
+      return total.push(result);
+    }
+
+    return handler();
+  });
+
+  total = total.length;
+  completed = completed.length;
 
   if (onlyBar) {
-    return <progress value={completedData} max={totalData}></progress>;
+    return <progress value={completed} max={total}></progress>;
   }
 
   if (noBar) {
-    return <p>{`${completedData} / ${totalData}`}</p>;
+    return (
+      <p>
+        {completed}/{total}
+      </p>
+    );
   }
 
   return (
-    <div>
-      <p>{`${completedData} / ${totalData}`}</p>
-      <progress value={completedData} max={totalData}></progress>
+    <div {...otherProps}>
+      <div>
+        {completed}/{total}
+      </div>
+      <progress value={completed} max={total}></progress>
     </div>
   );
 }
-
 export default Progress;
