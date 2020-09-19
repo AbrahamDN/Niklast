@@ -22,7 +22,7 @@ function SetGoalDuration({ min = 1, max, ...otherProps }) {
     <div {...otherProps}>
       <input
         onChange={e => handleChange(e)}
-        placeholder={1}
+        defaultValue={1}
         type='number'
         min={min}
         max={max}
