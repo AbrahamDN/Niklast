@@ -6,6 +6,8 @@ import { StoreContext } from '../../context/storeContext';
 function ConfirmGoalPage(){
     const {currentGoalState: [currentGoal],} = useContext(StoreContext);
     const steps = currentGoal.steps;
+    // const steps = currentGoal.steps;
+
     
     return(
         <div>
