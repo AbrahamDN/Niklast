@@ -10,8 +10,9 @@ function ListSteps({ steps, max, goal, valueOnly, ...otherProps }) {
     return (
       <span>
         {console.warn(
-          `ListSteps: 'steps' prop is ${steps}`,
-          `Either the prop is missing or the data cannot be maped`
+          `ListSteps: 'steps' prop is missing / invalid`,
+          `Either the prop is missing or the data cannot be mapped`,
+          { steps }
         )}
       </span>
     );
@@ -30,15 +31,6 @@ function ListSteps({ steps, max, goal, valueOnly, ...otherProps }) {
           )}
         </li>
       ))}
-
-      {
-        //   progress ? (
-        //   <Progress
-        //     data={steps}
-        //     progress={progress.length >= 1 ? progress : false}
-        //   />
-        // ) : null
-      }
     </div>
   );
 }
