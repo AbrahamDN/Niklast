@@ -20,7 +20,12 @@ function InsertGoal({ ...otherProps }) {
   return (
     <div {...otherProps}>
       <form onSubmit={e => handleSubmit(e)}>
-        <input value={goal} onChange={e => setGoal(e.target.value)} />
+        <input
+          value={goal}
+          onChange={e => setGoal(e.target.value)}
+          autoFocus
+          required
+        />
         <input value='Add' type='submit' />
       </form>
     </div>
