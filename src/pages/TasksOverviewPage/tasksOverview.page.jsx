@@ -1,23 +1,23 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { StoreContext } from '../../context/storeContext';
 import ListSteps from '../../components/ListSteps/listSteps.component';
+import ListGoals from '../../components/ListGoals/listGoals.component';
 
 function TasksOverview() {
   const {
     goalsState: [goals],
   } = useContext(StoreContext);
+  const history = useHistory();
+
   return (
     <div>
       <h1>Tasks Overview</h1>
       {goals.length ? (
         goals.map(goal => (
-          <Link key={goal.id} to=''>
-            <div>
-              <h3>{goal.goal}</h3>
-              <ListSteps steps={goal.steps} max={3} valueOnly />
-            </div>
-          </Link>
+          <ListGoals key={goal.id} selectGoal>
+            <ListSteps steps={goal.steps} max={3} valueOnly />
+          </ListGoals>
         ))
       ) : (
         <div>
@@ -27,12 +27,10 @@ function TasksOverview() {
       )}
 
       <div>
-        <Link to='/'>
-          <button>Add a new task</button>
-        </Link>
-        <Link to='/tasks-today'>
-          <button>Steps to take today</button>
-        </Link>
+        <button onClick={() => history.push('/')}>Add a new task</button>
+        <button onClick={() => history.push('/tasks-today')}>
+          Steps to take today
+        </button>
       </div>
     </div>
   );
