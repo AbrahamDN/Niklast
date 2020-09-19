@@ -5,12 +5,14 @@ import './App.css';
 
 import MainPage from './pages/MainPage/mainPage.page';
 import TasksOverview from './pages/TasksOverviewPage/tasksOverview.page';
+import TaskPage from './pages/TasksPage/task.page';
 import TodaysSteps from './pages/TodaysSteps/todaysSteps.page';
 
 function App() {
   return (
     <div className='App'>
       <Switch>
+        <Route path='/task' component={TaskPage} exact />
         <Route path='/tasks' component={TasksOverview} exact />
         <Route path='/tasks-today' component={TodaysSteps} exact />
         <Route path='/' component={MainPage} />
