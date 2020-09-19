@@ -8,6 +8,10 @@ export const StoreContext = createContext();
 function StoreContextProvider({ children }) {
   const [goals, setGoals] = useLocalStorage('goalsData', []);
   const [currentGoal, setCurrentGoal] = useLocalStorage('currentGoalDate', {});
+  const [selectedGoal, setSelectedGoal] = useLocalStorage(
+    'selectedGoalData',
+    {}
+  );
   const [sequence, setSequence] = React.useState([]);
   const [countSequence, setCountSequence] = React.useState(0);
 
@@ -28,6 +32,7 @@ function StoreContextProvider({ children }) {
   const store = {
     goalsState: [goals, setGoals],
     currentGoalState: [currentGoal, setCurrentGoal],
+    selectedGoalState: [selectedGoal, setSelectedGoal],
     sequenceState: [sequence, setSequence],
     countSequenceState: [countSequence, setCountSequence],
     handleSequence,
