@@ -7,19 +7,21 @@ import Progress from '../../components/Progess/progress.component';
 function TaskPage() {
   const {
     goalsState: [goals],
-    chosenGoalState: [chosenGoal],
+    selectedGoalState: [selectedGoal],
   } = useContext(StoreContext);
 
-  return (
+  return selectedGoal ? (
     <div>
       <h1>Task</h1>
       {goals.map(goal =>
-        goal.id === chosenGoal.id ? (
+        goal.id === selectedGoal.id ? (
           <ListSteps key={goal.id} steps={goal.steps} goal={goal} />
         ) : null
       )}
-      <Progress data={chosenGoal.steps} />
+      <Progress data={selectedGoal.steps} />
     </div>
+  ) : (
+    <div>'No Goal has been selected'</div>
   );
 }
 
