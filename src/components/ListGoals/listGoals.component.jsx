@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { StoreContext } from '../../context/storeContext';
+import ListSteps from '../ListSteps/listSteps.component';
 
-function ListGoals({ selectGoal, children, ...otherProps }) {
+function ListGoals({ selectGoal, steps, ...otherProps }) {
   const history = useHistory();
   const {
     goalsState: [goals],
@@ -16,19 +17,27 @@ function ListGoals({ selectGoal, children, ...otherProps }) {
 
   return (
     <div {...otherProps}>
-      <ul>
-        {goals
-          ? goals.map((goal, key) => (
-              <li
-                key={goal.id || key}
-                onClick={() => (selectGoal ? handleOnClick(goal) : null)}
-                style={{ cursor: 'pointer' }}>
-                {goal.goal}
-              </li>
-            ))
-          : null}
-      </ul>
-      {children}
+      {goals
+        ? goals.map((goal, key) => (
+            <div
+              key={goal.id || key}
+              onClick={() => (selectGoal ? handleOnClick(goal) : null)}
+              style={{ cursor: 'pointer' }}>
+              <b>{goal.goal}</b>
+
+              {steps ? (
+                <div>
+                  <ListSteps
+                    key={goal.id}
+                    steps={goal.steps}
+                    max={3}
+                    valueOnly
+                  />
+                </div>
+              ) : null}
+            </div>
+          ))
+        : null}
     </div>
   );
 }
