@@ -1,7 +1,8 @@
 import React from 'react';
 import { StoreContext } from '../../context/storeContext';
+import CustomDatePicker from '../CustomDatePicker/customDatePicker.component';
 
-function GoalStep({ step, goal, valueOnly, ...otherProps }) {
+function GoalStep({ step, goal, cite, valueOnly, withDate, ...otherProps }) {
   const {
     goalsState: [goals, setGoals],
     selectedGoalState: [selectedGoal, setSelectedGoal],
@@ -27,6 +28,12 @@ function GoalStep({ step, goal, valueOnly, ...otherProps }) {
     );
   };
 
+  const handleWithDate = () => {
+    if (withDate) {
+      return <CustomDatePicker step={step} goal={goal} />;
+    }
+  };
+
   React.useEffect(() => {
     // setInterval is there to make the jsx wait for the data before rending
     //This fixed the problem of outdated data  in jsx when switching between ages
@@ -36,16 +43,21 @@ function GoalStep({ step, goal, valueOnly, ...otherProps }) {
   }, []);
 
   if (valueOnly) {
-    return <span {...otherProps}>{step.value}</span>;
+    return (
+      <span {...otherProps}>
+        {step.value} {handleWithDate()}
+      </span>
+    );
   }
 
   return render ? (
     <div {...otherProps}>
-      {goal ? (
+      {cite && goal ? (
         <cite>
           goal: <b>{goal.goal}</b>
         </cite>
       ) : null}
+
       <div>{step.value}</div>
 
       <input
@@ -53,6 +65,8 @@ function GoalStep({ step, goal, valueOnly, ...otherProps }) {
         defaultChecked={step.complete || false}
         onChange={e => isComplete(e.target)}
       />
+
+      {handleWithDate()}
     </div>
   ) : (
     'Loading..'
