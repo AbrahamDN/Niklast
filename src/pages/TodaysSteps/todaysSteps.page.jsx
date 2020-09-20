@@ -15,7 +15,7 @@ function TodaysSteps() {
       {goals.map(goal => {
         return (
           <div key={goal.id}>
-            <ListSteps steps={goal.steps} goal={goal} />
+            <ListSteps steps={goal.steps} goal={goal} cite withDate />
           </div>
         );
       })}
