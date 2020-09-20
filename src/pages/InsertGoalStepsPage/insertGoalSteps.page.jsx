@@ -18,7 +18,7 @@ function InsertGoalStepsPage() {
       <b>{currentGoal.goal}</b>
       <InsertGoalStep />
 
-      {steps ? <ListSteps steps={steps} valueOnly /> : null}
+      {steps ? <ListSteps steps={steps} valueOnly withDate /> : null}
 
       <SequencePreviousBtn />
       <SequenceNextBtn />

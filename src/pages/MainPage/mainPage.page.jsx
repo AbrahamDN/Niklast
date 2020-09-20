@@ -5,7 +5,7 @@ import InsertGoal from '../../components/InsertGoal/insertGoal.component';
 import InsertGoalStepsPage from '../InsertGoalStepsPage/insertGoalSteps.page';
 import ListGoals from '../../components/ListGoals/listGoals.component';
 import SetGoalDurationPage from '../SetGoalDurationPage/setGoalDurationPage.page';
-import ConfirmGoalPage from '../ConfirmGoalPage/confirmGoalPage.page';
+import ConfirmGoalPage from '../ConfirmGoalPage/confirmGoal.page';
 
 function MainPage() {
   return (
@@ -18,7 +18,7 @@ function MainPage() {
           </div>,
           <SetGoalDurationPage />,
           <InsertGoalStepsPage />,
-          <ConfirmGoalPage/>
+          <ConfirmGoalPage />,
         ]}
       />
     </div>
