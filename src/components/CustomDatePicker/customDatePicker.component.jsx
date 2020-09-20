@@ -48,16 +48,18 @@ function CustomDatePicker({ step, goal, ...otherProps }) {
     }
   }
 
-  if (!dueDate && step) {
-    setGoals(
-      goals.map(goalObj =>
-        goalObj === goal ? setDueDate(startDate, goalObj) : goalObj
-      )
-    );
-  }
-  if (!dueDate && goal) {
-    setDueDate(startDate, goal);
-  }
+  React.useEffect(() => {
+    if (!dueDate && step) {
+      setGoals(
+        goals.map(goalObj =>
+          goalObj === goal ? setDueDate(startDate, goalObj) : goalObj
+        )
+      );
+    }
+    if (!dueDate && goal) {
+      setDueDate(startDate, goal);
+    }
+  }, []);
 
   return (
     <DatePicker
