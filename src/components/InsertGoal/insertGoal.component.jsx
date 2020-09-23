@@ -13,7 +13,7 @@ function InsertGoal({ ...otherProps }) {
   const handleGoalId = goals ? goals.length : 0;
   const handleSubmit = event => {
     event.preventDefault();
-    setGoals([...goals, { id: handleGoalId, goal }]);
+    setGoals([...goals, { id: handleGoalId, goal, createdAt: new Date() }]);
     setCurrentGoal({ id: handleGoalId, goal, createdAt: new Date() });
     handleSequence();
   };
