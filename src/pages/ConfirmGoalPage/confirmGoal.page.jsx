@@ -17,8 +17,8 @@ function ConfirmGoalPage() {
       {steps ? <ListSteps steps={steps} valueOnly /> : null}
 
       <p>Looks Good?</p>
-      <SequencePreviousBtn />
-      <SequenceNextBtn />
+      <SequencePreviousBtn value='No' />
+      <SequenceNextBtn value='Yes' />
     </div>
   );
 }
