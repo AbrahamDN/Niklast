@@ -14,7 +14,7 @@ function InsertGoal({ ...otherProps }) {
   const handleSubmit = event => {
     event.preventDefault();
     setGoals([...goals, { id: handleGoalId, goal }]);
-    setCurrentGoal({ id: handleGoalId, goal });
+    setCurrentGoal({ id: handleGoalId, goal, createdAt: new Date() });
     handleSequence();
   };
   return (
