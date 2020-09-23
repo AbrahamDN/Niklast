@@ -13,7 +13,7 @@ function InsertGoalStep({ ...otherProps }) {
     const handleSteps = (goal, step) => {
       return goal.steps
         ? [...goal.steps, { id: goal.steps.length, value: step }]
-        : [{ id: 0, value: step }];
+        : [{ id: 0, value: step, createdAt: new Date() }];
     };
 
     setGoals(
