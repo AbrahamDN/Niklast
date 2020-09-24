@@ -14,6 +14,7 @@ function CustomDatePicker({ step, goal, ...otherProps }) {
   const [startDate, setStartDate] = useState(new Date());
 
   const dueDateValidator = data => data && data.dueDate;
+  const createdAtValidator = data => data && data.createdAt;
 
   const dueDate = dueDateValidator(step)
     ? new Date(step.dueDate)
@@ -57,6 +58,12 @@ function CustomDatePicker({ step, goal, ...otherProps }) {
     return deaultNumber || num;
   }
 
+  function handleMinDate(data) {
+    if (createdAtValidator(data)) return new Date(data.createdAt);
+
+    return new Date();
+  }
+
   React.useEffect(() => {
     if (!dueDate && step) {
       setGoals(
@@ -77,7 +84,7 @@ function CustomDatePicker({ step, goal, ...otherProps }) {
       timeInputLabel='Time:'
       dateFormat='MM/dd/yyyy h:mm aa'
       showTimeInput
-      minDate={new Date()}
+      minDate={handleMinDate(step)}
       maxDate={addDays(new Date(), handleMaxDate())}
       {...otherProps}
     />
