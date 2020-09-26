@@ -50,12 +50,13 @@ function CustomDatePicker({ step, goal, ...otherProps }) {
     }
   }
 
-  function handleMaxDate(deaultNumber) {
-    const num = 7;
-    if (goal.duration)
-      return goal.duration.days ? goal.duration.days : deaultNumber || num;
+  function handleMaxDate() {
+    if (goal.duration) {
+      if (goal.duration.days && createdAtValidator(goal))
+        return addDays(new Date(goal.createdAt), goal.duration.days);
+    }
 
-    return deaultNumber || num;
+    return addDays(new Date(), 7);
   }
 
   function handleMinDate(data) {
@@ -75,6 +76,7 @@ function CustomDatePicker({ step, goal, ...otherProps }) {
     if (!dueDate && goal) {
       setDueDate(startDate, goal);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -82,10 +84,10 @@ function CustomDatePicker({ step, goal, ...otherProps }) {
       selected={dueDate || startDate}
       onChange={date => handleOnChange(date)}
       timeInputLabel='Time:'
-      dateFormat='MM/dd/yyyy h:mm aa'
+      dateFormat='dd/MM/yyyy h:mm aa'
       showTimeInput
       minDate={handleMinDate(step)}
-      maxDate={addDays(new Date(), handleMaxDate())}
+      maxDate={handleMaxDate()}
       {...otherProps}
     />
   );
