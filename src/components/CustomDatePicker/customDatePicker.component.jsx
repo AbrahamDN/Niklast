@@ -51,7 +51,7 @@ function CustomDatePicker({ step, goal, ...otherProps }) {
   }
 
   function handleMaxDate() {
-    if (goal.duration) {
+    if (goal && goal.duration) {
       if (goal.duration.days && createdAtValidator(goal))
         return addDays(new Date(goal.createdAt), goal.duration.days);
     }
