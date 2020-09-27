@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 
-const ProfilePage = ({goals_completed, steps_completed}) => {
+const ProfilePage = () => {
     let [goal_count, setGoalCount] = useState(5)
 
     function incrementGoalCount() {
@@ -19,7 +19,7 @@ const ProfilePage = ({goals_completed, steps_completed}) => {
            <p>zay@gmail.com / @soniclinkerman</p>
 
            <div>
-               <p>Goals completed: {goals_completed}</p>
+               <p>Goals completed: 2</p>
                <p>Max goals: 
                    <button onClick={decrementGoalCount}>-</button>
                    {goal_count}
@@ -27,7 +27,7 @@ const ProfilePage = ({goals_completed, steps_completed}) => {
             </div>
 
             <div>
-               <p>Steps completed: {steps_completed}</p>
+               <p>Steps completed: 3</p>
             </div>
         </div>
     )
